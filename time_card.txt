@@ -1,0 +1,6 @@
+DATE | TIME STARTED | DURATION | ACTIVITY |
+04/22/2025 | 10:15AM | 1 HOUR | Syllabus stuff |
+04/23/2025 | 11:00PM | 1 HOUR | Brainstorming Ideas / Researching | 
+04/24/2025 | 10:15AM | 1 HOUR | Lecture(Basic Technical Skills) / Looking for ideas |
+04/25/2025 | 11:00PM | 1 HOUR | Got the outline of my Project Proposal |
+04/29/2025 | 10:15AM | 1 HOUR | Lecture(Software Planning) / Worked on my proposal |
