@@ -3,19 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Timeline</title>
+    <title>Interactive Timeline Tree</title>
+    <link rel="stylesheet" href="timeline.css">
 </head>
 <body>
-    <header>
-        <h4>
-            Timeline(Work in Progress)
-        </h4>
-        <nav>
-            <a href="home.html">Home</a>
-        </nav>
-    </header>
-    <main>
+    <h1>Interactive Timeline Tree</h1>
+    
+    <div class="controls">
+        <button class="filter-btn active" data-category="all">All</button>
+        <button class="filter-btn" data-category="science">Science</button>
+        <button class="filter-btn" data-category="technology">Technology</button>
+        <button class="filter-btn" data-category="history">History</button>
+    </div>
+    
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search timeline events...">
+    </div>
+    
+    <div class="timeline-tree-container">
+        <div class="tree-trunk"></div>
+        <div class="timeline-tree" id="timeline-tree">
+            <!-- Timeline tree nodes will be added here by JavaScript -->
+        </div>
+        <div class="timeline-legend">
+            <div class="legend-item"><span class="legend-color science"></span>Science</div>
+            <div class="legend-item"><span class="legend-color technology"></span>Technology</div>
+            <div class="legend-item"><span class="legend-color history"></span>History</div>
+        </div>
+    </div>
 
-    </main>
+    <div class="event-details-modal" id="event-details-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modal-content-container"></div>
+        </div>
+    </div>
+
+    <script src="timeline.js"></script>
 </body>
 </html>
