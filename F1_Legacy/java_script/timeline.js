@@ -73,7 +73,6 @@ const timelineData = [
   }
 ];
 
-// DOM elements
 const timelineTree = document.getElementById('timeline-tree');
 const filterButtons = document.querySelectorAll('.filter-btn');
 const searchInput = document.getElementById('search-input');
