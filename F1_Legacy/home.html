@@ -3,29 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>F1 Legacy</title>
+    <title>F1 Hub</title>
     <link rel="stylesheet" href="styles/home.css">
+    <style>
+        /* Custom CSS for Inter font */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <section id="Title">
-            <img id= "t_image" src="images/F1-Logo.png" alt="logo_img">
-            <h4>
-                F1 Legacy
-            </h4>
-        </section>
-        <nav>
-            <a href="home.html">Home</a>
-            <a href="timeline.html">F1 Timeline</a>
-            <a href="driver_prof.html">Driver Profiles</a>
-            <a href="team_hist.html">Team History</a>
-            <a href="circ.html">Circuits Archive</a>
-            <a href="cars.html">Technical Evolution</a>
-            <a href="moments.html">Historic Moments</a>
-        </nav>
-    </header>
-    <main>
+    <div class="container">
+        <header>
+            <h1>F1 Logo (Placeholder)</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">TIMELINE</a></li>
+                    <li><a href="#">DRIVER PROFILE</a></li>
+                    <li><a href="#">TEAM HISTORY</a></li>
+                    <li><a href="#">CIRCUITS</a></li>
+                    <li><a href="#">CAR EVOLUTIONS</a></li>
+                    <li><a href="#">MOMENTS</a></li>
+                </ul>
+            </nav>
+        </header>
 
-    </main>
+        <section class="different-info">
+            <button id="prevInfo" class="nav-button">&lt;</button>
+            <div id="slideContainer" class="slide-container">
+                <div id="slideWrapper" class="slide-wrapper">
+                    <div id="slide-1" class="slide-item slide-1-bg">
+                        <p>Slide 1: Latest Race Highlights!</p>
+                        <span class="slide-caption">(Clips in Background)</span>
+                    </div>
+                    <div id="slide-2" class="slide-item slide-2-bg">
+                        <p>Slide 2: Driver Interviews!</p>
+                        <span class="slide-caption">(Clips in Background)</span>
+                    </div>
+                    <div id="slide-3" class="slide-item slide-3-bg">
+                        <p>Slide 3: Team Strategy Breakdown!</p>
+                        <span class="slide-caption">(Clips in Background)</span>
+                    </div>
+                </div>
+            </div>
+            <button id="nextInfo" class="nav-button">&gt;</button>
+        </section>
+
+        <section class="teams-section">
+            <span class="teams-label">Looking for Next Example Teams:</span>
+            <div class="team-buttons-wrapper">
+                <button class="team-button redbull-bg">REDBULL</button>
+                <button class="team-button mclaren-bg">MCLAREN</button>
+                <button class="team-button ferrari-bg">FERRARI</button>
+                <button class="team-button mercedes-bg">MERCEDES</button>
+            </div>
+        </section>
+
+        <section class="current-champion">
+            <h2>CURRENT WORLD CHAMPION</h2>
+            <div class="content-area champion-content">
+                Content about the current world champion will go here.
+            </div>
+        </section>
+
+        <section class="main-content">
+            <h2>Main Content Area</h2>
+            <div class="content-area main-page-content">
+                This is where the main content of the page will be displayed.
+            </div>
+        </section>
+    </div>
+
+    <script src="java_script/home.js"></script>
 </body>
 </html>
