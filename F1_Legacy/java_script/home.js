@@ -1,6 +1,3 @@
-// script.js
-// This file contains JavaScript for interactive elements.
-
 document.addEventListener('DOMContentLoaded', () => {
     // Get references to the navigation buttons for the info section
     const prevInfoButton = document.getElementById('prevInfo');
@@ -11,6 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const slideWrapper = document.getElementById('slideWrapper');
     const slides = slideWrapper ? slideWrapper.querySelectorAll('.slide-item') : [];
     let currentSlideIndex = 0; // Keep track of the currently displayed slide
+
+    // Auto-play slider variables
+    let slideInterval;
+    const autoPlayDelay = 5000; // 5 seconds
 
     /**
      * Shows a specific slide by translating the slide wrapper horizontally.
@@ -27,29 +28,78 @@ document.addEventListener('DOMContentLoaded', () => {
         const translateXValue = -index * 100;
         slideWrapper.style.transform = `translateX(${translateXValue}%)`;
 
-        // No need to toggle 'hidden' class or opacity for horizontal sliding
+        // Pause all videos and play only the current one (if available)
+        slides.forEach((slide, i) => {
+            const iframe = slide.querySelector('iframe');
+            if (iframe) {
+                // Using YouTube IFrame Player API commands for better control
+                // Note: This requires 'enablejsapi=1' in the iframe src and YouTube API script loaded
+                // For simplicity here, we'll just reload the iframe src to restart autoplay for the active slide
+                // A more robust solution would use the YouTube Player API
+                if (i === index) {
+                    // Re-set src to ensure it plays, including autoplay and mute parameters
+                    const currentSrc = iframe.src;
+                    // Ensure the 'autoplay=1' and 'mute=1' parameters are present
+                    if (!currentSrc.includes('autoplay=1')) {
+                        iframe.src = currentSrc + '&autoplay=1';
+                    }
+                    if (!currentSrc.includes('mute=1')) {
+                        iframe.src = currentSrc + '&mute=1';
+                    }
+                } else {
+                    // Pause other videos by stopping them (removing autoplay, setting state to -1)
+                    let pausedSrc = iframe.src.replace(/autoplay=1/g, 'autoplay=0');
+                    // If video is still running in background, manually set to 0 and remove it.
+                    pausedSrc = pausedSrc.replace(/state=1/g, 'state=0');
+                    iframe.src = pausedSrc;
+                }
+            }
+        });
+    };
+
+    const startAutoPlay = () => {
+        stopAutoPlay(); // Clear any existing interval to prevent multiple intervals running
+        slideInterval = setInterval(() => {
+            currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+            showSlide(currentSlideIndex);
+        }, autoPlayDelay);
+    };
+
+    const stopAutoPlay = () => {
+        clearInterval(slideInterval);
     };
 
     // Initialize: show the first slide when the page loads
     if (slides.length > 0) {
         showSlide(currentSlideIndex);
+        startAutoPlay(); // Start auto-play when page loads
     }
 
     // Add event listeners for the info navigation buttons
     if (prevInfoButton) {
         prevInfoButton.addEventListener('click', () => {
             console.log('Previous Info button clicked!');
+            stopAutoPlay(); // Stop auto-play on manual navigation
             currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
             showSlide(currentSlideIndex);
+            startAutoPlay(); // Resume auto-play
         });
     }
 
     if (nextInfoButton) {
         nextInfoButton.addEventListener('click', () => {
             console.log('Next Info button clicked!');
+            stopAutoPlay(); // Stop auto-play on manual navigation
             currentSlideIndex = (currentSlideIndex + 1) % slides.length;
             showSlide(currentSlideIndex);
+            startAutoPlay(); // Resume auto-play
         });
+    }
+
+    // Pause auto-play on hover for the slide container
+    if (slideContainer) {
+        slideContainer.addEventListener('mouseenter', stopAutoPlay);
+        slideContainer.addEventListener('mouseleave', startAutoPlay);
     }
 
     // Get references to all team buttons
@@ -60,11 +110,35 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', (event) => {
             const teamName = event.target.textContent;
             console.log(`${teamName} team button clicked!`);
-            // Add functionality here to display information specific to the clicked team
-            // For example, update the 'Main Content Area' with team details
             const mainContentArea = document.querySelector('.main-content .content-area');
             if (mainContentArea) {
-                mainContentArea.innerHTML = `<p class="dynamic-content-title">Displaying information for: <span class="dynamic-content-team">${teamName}</span></p><p class="dynamic-content-text">This content would be dynamically loaded based on the selected team.</p>`;
+                let dynamicContent = '';
+                switch(teamName) {
+                    case 'REDBULL':
+                        dynamicContent = `<p class="dynamic-content-title">Red Bull Racing: Dominance in Modern F1</p>
+                                          <p class="dynamic-content-text">Red Bull Racing has emerged as a dominant force in Formula 1, securing multiple Constructors' and Drivers' Championships. Known for their innovative aerodynamics and fierce competition, they continue to push the boundaries of performance.</p>
+                                          <p class="dynamic-content-text">Key drivers include Max Verstappen and Sergio Pérez.</p>`;
+                        break;
+                    case 'MCLAREN':
+                        dynamicContent = `<p class="dynamic-content-title">McLaren: A Legacy of Innovation</p>
+                                          <p class="dynamic-content-text">McLaren boasts a rich history in Formula 1, with numerous championships and legendary drivers. They are celebrated for their engineering prowess and iconic liveries.</p>
+                                          <p class="dynamic-content-text">Current drivers include Lando Norris and Oscar Piastri.</p>`;
+                        break;
+                    case 'FERRARI':
+                        dynamicContent = `<p class="dynamic-content-title">Scuderia Ferrari: The Heart of Formula 1</p>
+                                          <p class="dynamic-content-text">Ferrari is synonymous with Formula 1, being the oldest and most successful team in the sport's history. Their passionate Tifosi and iconic red cars are a cornerstone of F1.</p>
+                                          <p class="dynamic-content-text">Drivers: Charles Leclerc and Carlos Sainz.</p>`;
+                        break;
+                    case 'MERCEDES':
+                        dynamicContent = `<p class="dynamic-content-title">Mercedes-AMG Petronas F1 Team: Era of Hybrid Power</p>
+                                          <p class="dynamic-content-text">Mercedes dominated the hybrid era of Formula 1, securing an unprecedented eight consecutive Constructors' Championships. Their engineering excellence and powerful engines set new benchmarks.</p>
+                                          <p class="dynamic-content-text">Key drivers include Lewis Hamilton and George Russell.</p>`;
+                        break;
+                    default:
+                        dynamicContent = `<p class="dynamic-content-title">Displaying information for: <span class="highlight">${teamName}</span></p>
+                                          <p class="dynamic-content-text">This content would be dynamically loaded based on the selected team.</p>`;
+                }
+                mainContentArea.innerHTML = dynamicContent;
             }
         });
     });

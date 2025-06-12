@@ -12,71 +12,99 @@ html, body {
     margin: 0;
     padding: 0;
     font-family: 'Inter', sans-serif;
-    background-color: #333; /* Dark gray/black background - F1 vibe */
+    background-color: #2a2a2a; /* Slightly darker background for more depth */
     display: flex;
-    flex-direction: column; /* Ensure header appears before the main content */
+    flex-direction: column;
     align-items: center;
-    justify-content: flex-start; /* Align items to the top initially */
+    justify-content: flex-start;
     min-height: 100vh;
     box-sizing: border-box;
+    color: #eee;
 }
 
 .container {
-    background-color: #f0f0f0; /* Light gray for content area */
-    border-radius: 0.5rem;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
-    padding: 2rem; /* Increased padding */
-    max-width: 1200px; /* Increased max width for larger screens */
-    width: 95%; /* Take up most of the screen width */
-    margin: 2rem 0; /* Adjust vertical margin */
+    background-color: #1a1a1a; /* Darker content area for a sleek look */
+    border-radius: 0.75rem; /* More rounded corners */
+    box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.4), 0 6px 10px -3px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+    padding: 2.5rem; /* Increased padding */
+    max-width: 1200px;
+    width: 95%;
+    margin: 2rem 0;
+    border: 1px solid #444; /* Subtle border */
 }
 
 /* Header Section */
 header {
     text-align: left;
-    padding-bottom: 1.5rem;
-    border-bottom: 2px solid #e0e0e0;
-    margin-bottom: 2rem;
-    width: 100%; /* Ensure header spans the container width */
+    padding-bottom: 1.8rem; /* More spacing */
+    border-bottom: 2px solid #555; /* Darker, more prominent border */
+    margin-bottom: 2.5rem; /* More spacing */
+    width: 100%;
 }
 
-header h1 {
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: #d9534f; /* Vibrant red - Ferrari/F1 accent */
-    margin-bottom: 1.2rem;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+/* F1 Logo Styling */
+.f1-logo {
+    max-width: 180px; /* Slightly larger logo */
+    height: auto;
+    display: block;
+    margin-bottom: 1.5rem;
+}
+
+header h1 { /* Keeping this for fallback, but it's hidden if img is present */
+    display: none;
 }
 
 /* Navigation */
 nav {
-    background-color: #444; /* Darker background for nav */
-    padding: 1rem;
-    border-radius: 0.375rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    width: 100%; /* Ensure nav spans the container width */
-    box-sizing: border-box; /* Include padding in width */
+    background-color: #333; /* Darker background for nav */
+    padding: 1.2rem; /* Increased padding */
+    border-radius: 0.5rem; /* More rounded */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4); /* Stronger shadow */
+    width: 100%;
+    box-sizing: border-box;
 }
 
 nav ul {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: nowrap; /* Prevent items from wrapping */
     justify-content: center;
-    gap: 2rem;
+    gap: 2.5rem; /* More space between nav items */
     list-style: none;
     margin: 0;
     padding: 0;
-    font-size: 1.2rem;
+    font-size: 1.3rem; /* Slightly larger font */
     font-weight: 600;
-    color: #eee; /* Light text for contrast */
-    overflow-x: auto; /* This makes the nav scrollable horizontally */
-    white-space: nowrap; /* Keeps items on a single line */
+    color: #ccc; /* Slightly lighter text for contrast */
+    overflow-x: auto;
+    white-space: nowrap;
     -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
+    scrollbar-width: thin;
+    scrollbar-color: #d9534f #444; /* Adjusted scrollbar color */
+    scroll-snap-type: x mandatory;
+    padding-bottom: 0.6rem;
 }
 
+/* Custom Webkit scrollbar styles */
 nav ul::-webkit-scrollbar {
-    display: none;
+    height: 10px; /* Taller scrollbar */
+}
+
+nav ul::-webkit-scrollbar-track {
+    background: #444;
+    border-radius: 10px;
+}
+
+nav ul::-webkit-scrollbar-thumb {
+    background: #e63946; /* More vibrant red */
+    border-radius: 10px;
+}
+
+nav ul::-webkit-scrollbar-thumb:hover {
+    background: #c21f2b; /* Darker red on hover */
+}
+
+nav ul li {
+    scroll-snap-align: start;
 }
 
 @media (min-width: 768px) {
@@ -88,14 +116,16 @@ nav ul::-webkit-scrollbar {
 nav a {
     text-decoration: none;
     color: inherit;
-    padding: 0.7rem 1rem;
-    border-radius: 0.375rem;
-    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    padding: 0.8rem 1.2rem; /* More padding for links */
+    border-radius: 0.4rem;
+    transition: all 0.3s ease-in-out; /* Smooth transition for all properties */
 }
 
 nav a:hover {
     color: #fff;
-    background-color: #d9534f; /* Red hover effect */
+    background-color: #e63946; /* More vibrant red */
+    transform: translateY(-2px); /* Slight lift on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 /* Different Info Section (Slider) */
@@ -103,175 +133,486 @@ nav a:hover {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #222; /* Dark background for slider */
-    border-radius: 0.375rem;
-    padding: 1.2rem;
-    margin-bottom: 2rem;
+    background-color: #222;
+    border-radius: 0.5rem; /* More rounded */
+    padding: 1.5rem; /* More padding */
+    margin-bottom: 2.5rem;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5); /* Inner shadow for depth */
 }
 
 .nav-button {
-    background-color: #555;
-    color: #eee;
+    background-color: #4CAF50; /* Green button for contrast */
+    color: #fff;
     font-weight: 700;
-    padding: 0.7rem 1.5rem;
+    padding: 0.8rem 1.8rem; /* More prominent buttons */
     border-radius: 9999px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.2s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
     border: none;
     cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .nav-button:hover {
-    background-color: #777;
+    background-color: #45a049; /* Darker green on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+.nav-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .slide-container {
     flex-grow: 1;
     text-align: center;
     color: #eee;
-    font-size: 1.4rem;
-    font-weight: 500;
     position: relative;
-    height: 8rem; /* Increased height */
+    height: 30rem; /* Significantly larger slides */
     display: flex; /* Changed to flex to contain the wrapper */
     overflow: hidden; /* This hides slides not currently in view */
-    border-radius: 0.375rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
 .slide-wrapper {
     display: flex; /* Arrange slides horizontally */
-    width: 300%; /* 100% per slide * number of slides (3 in this case) */
+    width: 100%; /* Only show one slide at a time */
     height: 100%;
-    transition: transform 0.5s ease-in-out; /* Smooth sliding transition */
+    transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1); /* Smoother transition */
 }
 
 .slide-item {
     flex-shrink: 0; /* Prevent slides from shrinking */
-    width: calc(100% / 3); /* Each slide takes 1/3 of the wrapper width (100% of container) */
+    width: 100%; /* Each slide takes 100% of the wrapper width (100% of container) */
     height: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    border-radius: 0.375rem; /* Apply to each slide for rounded corners */
+    border-radius: 0.5rem; /* Apply to each slide for rounded corners */
     color: #fff; /* White text on slides */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Stronger text shadow */
+    position: relative;
+    overflow: hidden; /* Important for iframe */
 }
 
-/* Slide background colors - F1 team colors */
-.slide-1-bg { background-color: #d9534f; } /* Ferrari red */
-.slide-2-bg { background-color: #00aedb; } /* McLaren blue */
-.slide-3-bg { background-color: #1e3799; } /* Mercedes blue/dark */
+.slide-video-background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw; /* Make it wider than the container to ensure full coverage */
+    height: 100vh; /* Make it taller than the container */
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%); /* Center the video */
+    pointer-events: none; /* Allows clicks to pass through to elements behind */
+    z-index: 1;
+}
+
+.slide-text-overlay {
+    position: relative; /* Relative to slide-item */
+    z-index: 2; /* Above the video */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+.slide-text-overlay p {
+    font-size: 2.8rem; /* Even larger font size for main text */
+    font-weight: 800;
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
 
 .slide-caption {
-    display: block;
-    font-size: 0.9rem;
-    color: #ddd;
-    position: absolute; /* Keep caption positioned within its slide */
-    bottom: 0.8rem;
-    width: 100%;
-    text-align: center;
+    font-size: 1.4rem; /* Adjusted caption font size */
+    color: #ccc;
+    font-weight: 500;
 }
 
-/* Teams Section */
+/* Teams Section (Now at the bottom) */
 .teams-section {
-    border-top: 2px solid #e0e0e0;
-    border-bottom: 2px solid #e0e0e0;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-    margin-bottom: 2rem;
-    text-align: center; /* Center team buttons */
+    border-top: 2px solid #555;
+    border-bottom: none; /* No bottom border here */
+    padding-top: 1.8rem;
+    padding-bottom: 1.8rem;
+    margin-top: 2.5rem; /* Add margin at the top to separate from main content */
+    margin-bottom: 0; /* No bottom margin, it's at the very end */
+    text-align: center;
+    background-color: #222;
+    border-radius: 0.5rem;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
 }
 
 .teams-label {
-    color: #eee;
+    color: #ccc;
     font-weight: 500;
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
     display: block;
+    font-size: 1.1rem;
 }
 
 .team-buttons-wrapper {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Center buttons */
-    gap: 0.8rem;
+    justify-content: center;
+    gap: 1rem;
 }
 
 .team-button {
     color: #fff;
     font-weight: 600;
-    padding: 0.7rem 1.5rem;
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.2s ease-in-out;
+    padding: 0.9rem 1.8rem;
+    border-radius: 0.6rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
     border: none;
     cursor: pointer;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 /* Team specific background colors */
-.redbull-bg { background-color: #1e41ff; } /* Red Bull dark blue */
-.redbull-bg:hover { background-color: #0d248f; }
-
+.redbull-bg { background-color: #000080; } /* Darker Blue */
+.redbull-bg:hover { background-color: #000060; transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.4);}
 .mclaren-bg { background-color: #ff8700; } /* McLaren orange */
-.mclaren-bg:hover { background-color: #e07a00; }
-
+.mclaren-bg:hover { background-color: #e07a00; transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.4);}
 .ferrari-bg { background-color: #dc0000; } /* Ferrari bright red */
-.ferrari-bg:hover { background-color: #b80000; }
+.ferrari-bg:hover { background-color: #b80000; transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.4);}
+.mercedes-bg { background-color: #00a09e; } /* Mercedes teal, slightly darker */
+.mercedes-bg:hover { background-color: #00807e; transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.4);}
 
-.mercedes-bg { background-color: #00d2be; } /* Mercedes teal */
-.mercedes-bg:hover { background-color: #00a796; }
-
-/* Current Champion and Main Content Sections */
-.current-champion,
-.main-content {
-    margin-bottom: 2rem;
-    padding: 1.5rem;
-    background-color: #333; /* Dark background for these sections */
-    border-radius: 0.5rem;
+.team-button:active {
+    transform: translateY(0);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    color: #eee;
 }
 
-.current-champion h2,
-.main-content h2 {
+/* How F1 Works Section - Abstract Look */
+.f1-works {
+    margin-bottom: 2.5rem;
+    padding: 2rem;
+    background-color: #1a1a1a; /* Match container background */
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    color: #eee;
+    position: relative;
+    overflow: hidden; /* Hide anything going outside */
+}
+
+.f1-works h2 {
+    font-size: 2.2rem; /* Larger heading */
+    font-weight: 800;
+    color: #e63946; /* Vibrant red accent */
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.f1-works-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+    gap: 2rem; /* Space between blocks */
+    padding: 1rem;
+}
+
+.f1-works-block {
+    background: linear-gradient(135deg, #333 0%, #1a1a1a 100%); /* Diagonal gradient */
+    border: 1px solid rgba(100, 100, 100, 0.3); /* Subtle border */
+    border-radius: 0.6rem;
+    padding: 1.8rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4), inset 0 0 8px rgba(255, 255, 255, 0.05); /* Multi-layered shadow */
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    z-index: 1; /* Ensure blocks are above any background effects */
+}
+
+.f1-works-block::before { /* Abstract overlay effect */
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
+    transform: rotate(45deg);
+    z-index: -1;
+}
+
+.f1-works-block:nth-child(even) { /* Alternate slight rotation for abstract look */
+    transform: rotateZ(1deg);
+}
+
+.f1-works-block:nth-child(odd) {
+    transform: rotateZ(-1deg);
+}
+
+.f1-works-block:hover {
+    transform: translateY(-5px) rotateZ(0deg); /* Lift and straighten on hover */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6), inset 0 0 12px rgba(255, 255, 255, 0.1);
+    border-color: rgba(220, 0, 0, 0.5); /* Red highlight on hover */
+    z-index: 2; /* Bring hovered block to front */
+}
+
+
+.f1-works-block h3 {
     font-size: 1.8rem;
     font-weight: 700;
+    color: #00d2be; /* Mercedes teal accent */
+    margin-top: 0;
+    margin-bottom: 1rem;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.f1-works-block p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: #ccc;
+}
+
+.f1-works-block ul {
+    list-style: none; /* Remove default list style */
+    padding: 0;
+    margin-left: 0; /* Remove default margin */
+    margin-bottom: 1rem;
+}
+
+.f1-works-block ul li {
+    margin-bottom: 0.6rem;
+    padding-left: 1.5rem;
+    position: relative;
+    color: #ddd;
+}
+
+.f1-works-block ul li::before { /* Custom bullet point */
+    content: '\2022'; /* Unicode bullet point */
+    color: #e63946; /* Accent color for bullets */
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1.5em;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.f1-works-block strong {
     color: #fff;
-    margin-bottom: 1.2rem;
+    font-weight: 700;
+}
+
+
+/* Main Content Sections */
+.main-content {
+    margin-bottom: 2rem;
+    padding: 2rem;
+    background-color: #222; /* Dark background for these sections */
+    border-radius: 0.6rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    color: #eee;
+    border: 1px solid #444;
+}
+
+.main-content h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1.5rem;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    text-align: center;
 }
 
 .content-area {
-    background-color: #444;
+    background-color: #333; /* Darker background for content area */
     border: 2px dashed #666;
-    border-radius: 0.5rem;
-    padding: 1.5rem;
+    border-radius: 0.6rem;
+    padding: 1.8rem;
     text-align: center;
     color: #ddd;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 8rem;
-}
-
-.champion-content {
-    min-height: 10rem;
+    min-height: 10rem; /* Adjusted min-height */
+    box-shadow: inset 0 0 8px rgba(0,0,0,0.4);
 }
 
 .main-page-content {
-    min-height: 15rem;
+    min-height: 18rem; /* Adjusted min-height */
 }
 
 /* Styles for dynamic content in main-page-content */
 .main-page-content p {
-    font-size: 1.3rem;
+    font-size: 1.4rem; /* Slightly larger font */
     font-weight: 600;
+    margin-bottom: 1rem;
 }
 
-.main-page-content span {
+.main-page-content .highlight {
     color: #ff8700; /* McLaren orange accent */
 }
 
 .main-page-content p + p {
-    margin-top: 0.8rem;
+    margin-top: 1rem;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1024px) {
+    .f1-works-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+    .f1-works-block {
+        padding: 1.5rem;
+    }
+    .f1-works-block h3 {
+        font-size: 1.6rem;
+    }
+    .slide-container {
+        height: 25rem; /* Adjust height for medium screens */
+    }
+    .slide-text-overlay p {
+        font-size: 2.4rem;
+    }
+    .slide-caption {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1.5rem;
+    }
+
+    .f1-logo {
+        max-width: 150px;
+    }
+
+    nav ul {
+        gap: 1.2rem;
+        font-size: 1.1rem;
+        justify-content: flex-start; /* Force scrollable on smaller screens */
+    }
+
+    .different-info {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .nav-button {
+        width: 90%;
+        margin: 0.6rem 0;
+        padding: 0.7rem 1.5rem;
+    }
+
+    .slide-container {
+        height: 20rem; /* Adjusted height for medium screens */
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    .slide-text-overlay p {
+        font-size: 2rem;
+    }
+    .slide-caption {
+        font-size: 1.1rem;
+    }
+
+    .teams-label {
+        font-size: 1rem;
+    }
+
+    .team-button {
+        font-size: 0.9rem;
+        padding: 0.7rem 1.4rem;
+    }
+
+    .f1-works h2,
+    .main-content h2 {
+        font-size: 1.8rem;
+    }
+    .f1-works-block h3 {
+        font-size: 1.4rem;
+    }
+    .f1-works-block p,
+    .f1-works-block ul li {
+        font-size: 0.95rem;
+    }
+
+    .f1-works-grid {
+        grid-template-columns: 1fr; /* Single column on small screens */
+        gap: 1.5rem;
+    }
+
+    .f1-works-block:nth-child(even),
+    .f1-works-block:nth-child(odd) { /* Remove rotation on small screens for better readability */
+        transform: rotateZ(0deg);
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .f1-logo {
+        max-width: 120px;
+    }
+
+    nav ul {
+        font-size: 0.85rem;
+        gap: 0.8rem;
+        padding-bottom: 0.4rem;
+    }
+
+    nav ul::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    .slide-container {
+        height: 15rem; /* Adjusted height for small screens */
+    }
+    .slide-text-overlay p {
+        font-size: 1.6rem;
+    }
+    .slide-caption {
+        font-size: 0.9rem;
+    }
+
+
+    .team-button {
+        font-size: 0.8rem;
+        padding: 0.6rem 1.2rem;
+    }
+
+    .f1-works h2,
+    .main-content h2 {
+        font-size: 1.5rem;
+    }
+    .f1-works-block h3 {
+        font-size: 1.3rem;
+    }
+    .f1-works-block p,
+    .f1-works-block ul li {
+        font-size: 0.85rem;
+    }
+
+    .f1-works-block {
+        padding: 1.2rem;
+    }
+    .f1-works-block ul li::before {
+        font-size: 0.9rem;
+    }
 }
