@@ -1,9 +1,3 @@
-/*
- * style.css
- * This file contains all custom CSS rules for the F1 Hub website.
- */
-
-/* Import the Inter font from Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 /* Base Styles */
@@ -133,11 +127,27 @@ nav a:hover {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #222;
+    background-color: #222; /* Fallback/background for when video isn't loaded */
     border-radius: 0.5rem; /* More rounded */
     padding: 1.5rem; /* More padding */
     margin-bottom: 2.5rem;
     box-shadow: inset 0 0 10px rgba(0,0,0,0.5); /* Inner shadow for depth */
+    position: relative; /* Needed for absolute positioning of video */
+    overflow: hidden; /* Ensures video stays within bounds */
+}
+
+.slider-background-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover; /* Ensures video covers the area without distortion */
+    z-index: 0; /* Behind other content */
+    pointer-events: none; /* Allows mouse events to pass through */
 }
 
 .nav-button {
@@ -152,6 +162,7 @@ nav a:hover {
     cursor: pointer;
     text-transform: uppercase;
     letter-spacing: 1px;
+    z-index: 1; /* Above the video */
 }
 
 .nav-button:hover {
@@ -174,6 +185,7 @@ nav a:hover {
     overflow: hidden; /* This hides slides not currently in view */
     border-radius: 0.5rem;
     box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    z-index: 1; /* Above the video */
 }
 
 .slide-wrapper {
@@ -195,20 +207,7 @@ nav a:hover {
     color: #fff; /* White text on slides */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Stronger text shadow */
     position: relative;
-    overflow: hidden; /* Important for iframe */
-}
-
-.slide-video-background {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100vw; /* Make it wider than the container to ensure full coverage */
-    height: 100vh; /* Make it taller than the container */
-    min-width: 100%;
-    min-height: 100%;
-    transform: translate(-50%, -50%); /* Center the video */
-    pointer-events: none; /* Allows clicks to pass through to elements behind */
-    z-index: 1;
+    overflow: hidden;
 }
 
 .slide-text-overlay {
@@ -220,7 +219,7 @@ nav a:hover {
     justify-content: center;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay to ensure text visibility */
     padding: 2rem;
     box-sizing: border-box;
 }

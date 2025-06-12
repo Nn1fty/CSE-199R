@@ -15,6 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /**
      * Shows a specific slide by translating the slide wrapper horizontally.
+     * In this version, the background video is assumed to be a single, continuous element
+     * outside of the individual slides. This function only handles the text slide transition.
      * @param {number} index The index of the slide to show.
      */
     const showSlide = (index) => {
@@ -28,33 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const translateXValue = -index * 100;
         slideWrapper.style.transform = `translateX(${translateXValue}%)`;
 
-        // Pause all videos and play only the current one (if available)
-        slides.forEach((slide, i) => {
-            const iframe = slide.querySelector('iframe');
-            if (iframe) {
-                // Using YouTube IFrame Player API commands for better control
-                // Note: This requires 'enablejsapi=1' in the iframe src and YouTube API script loaded
-                // For simplicity here, we'll just reload the iframe src to restart autoplay for the active slide
-                // A more robust solution would use the YouTube Player API
-                if (i === index) {
-                    // Re-set src to ensure it plays, including autoplay and mute parameters
-                    const currentSrc = iframe.src;
-                    // Ensure the 'autoplay=1' and 'mute=1' parameters are present
-                    if (!currentSrc.includes('autoplay=1')) {
-                        iframe.src = currentSrc + '&autoplay=1';
-                    }
-                    if (!currentSrc.includes('mute=1')) {
-                        iframe.src = currentSrc + '&mute=1';
-                    }
-                } else {
-                    // Pause other videos by stopping them (removing autoplay, setting state to -1)
-                    let pausedSrc = iframe.src.replace(/autoplay=1/g, 'autoplay=0');
-                    // If video is still running in background, manually set to 0 and remove it.
-                    pausedSrc = pausedSrc.replace(/state=1/g, 'state=0');
-                    iframe.src = pausedSrc;
-                }
-            }
-        });
+        // The video play/pause logic is removed from here
+        // as the background video is now a continuous element.
     };
 
     const startAutoPlay = () => {
