@@ -1,0 +1,612 @@
+/*
+ * driver_prof.css
+ * This file contains custom CSS rules specifically for the Driver Profile page.
+ */
+
+/* Import the Inter font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Base Styles (copied from home.css for consistency) */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #2a2a2a; /* Slightly darker background for more depth */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    box-sizing: border-box;
+    color: #eee;
+}
+
+.container {
+    background-color: #1a1a1a; /* Darker content area for a sleek look */
+    border-radius: 0.75rem; /* More rounded corners */
+    box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.4), 0 6px 10px -3px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+    padding: 2.5rem; /* Increased padding */
+    max-width: 1200px;
+    width: 95%;
+    margin: 2rem 0;
+    border: 1px solid #444; /* Subtle border */
+}
+
+/* Header Section (copied from home.css for consistency) */
+header {
+    text-align: left;
+    padding-bottom: 1.8rem; /* More spacing */
+    border-bottom: 2px solid #555; /* Darker, more prominent border */
+    margin-bottom: 2.5rem; /* More spacing */
+    width: 100%;
+}
+
+/* F1 Logo Styling (copied from home.css for consistency) */
+.f1-logo {
+    max-width: 180px; /* Slightly larger logo */
+    height: auto;
+    display: block;
+    margin-bottom: 1.5rem;
+}
+
+header h1 { /* Keeping this for fallback, but it's hidden if img is present */
+    display: none;
+}
+
+/* Navigation (copied from home.css for consistency) */
+nav {
+    background-color: #333; /* Darker background for nav */
+    padding: 1.2rem; /* Increased padding */
+    border-radius: 0.5rem; /* More rounded */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4); /* Stronger shadow */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+nav ul {
+    display: flex;
+    flex-wrap: nowrap; /* Prevent items from wrapping */
+    justify-content: center;
+    gap: 2.5rem; /* More space between nav items */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 1.3rem; /* Slightly larger font */
+    font-weight: 600;
+    color: #ccc; /* Slightly lighter text for contrast */
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #d9534f #444; /* Adjusted scrollbar color */
+    scroll-snap-type: x mandatory;
+    padding-bottom: 0.6rem;
+}
+
+/* Custom Webkit scrollbar styles */
+nav ul::-webkit-scrollbar {
+    height: 10px; /* Taller scrollbar */
+}
+
+nav ul::-webkit-scrollbar-track {
+    background: #444;
+    border-radius: 10px;
+}
+
+nav ul::-webkit-scrollbar-thumb {
+    background: #e63946; /* More vibrant red */
+    border-radius: 10px;
+}
+
+nav ul::-webkit-scrollbar-thumb:hover {
+    background: #c21f2b; /* Darker red on hover */
+}
+
+nav ul li {
+    scroll-snap-align: start;
+}
+
+@media (min-width: 768px) {
+    nav ul {
+        justify-content: flex-start;
+    }
+}
+
+nav a {
+    text-decoration: none;
+    color: inherit;
+    padding: 0.8rem 1.2rem; /* More padding for links */
+    border-radius: 0.4rem;
+    transition: all 0.3s ease-in-out; /* Smooth transition for all properties */
+}
+
+nav a:hover {
+    color: #fff;
+    background-color: #e63946; /* More vibrant red */
+    transform: translateY(-2px); /* Slight lift on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Main Content Sections (general styling for all pages, including driver-profile) */
+main.main-content {
+    margin-top: 2.5rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    padding: 0 2rem;
+    box-sizing: border-box;
+}
+
+main.main-content h2 { /* This rule is now effectively superseded by .video-overlay-title-area h2 for the driver profile page */
+    font-size: 2.5rem; /* Larger heading for the page title */
+    font-weight: 800;
+    color: #e63946; /* Vibrant red accent */
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- Video Background Section --- */
+.profile-header-visual {
+    position: relative;
+    width: 100%;
+    height: 250px; /* Increased height for better visual impact */
+    margin-bottom: 3rem; /* More space below the header visual */
+    border-radius: 0.75rem;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6); /* Stronger shadow */
+    border: 2px solid #555; /* Subtle border for definition */
+}
+
+.driver-profile-video-background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.video-overlay-title-area {
+    position: relative;
+    z-index: 1; /* Above the video */
+    background-color: rgba(0, 0, 0, 0.7); /* Darker overlay for strong text contrast */
+    padding: 1.5rem 2.5rem; /* More padding for content */
+    border-radius: 0.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%; /* Ensure overlay covers its parent height */
+    width: 100%; /* Ensure overlay covers its parent width */
+}
+
+.video-overlay-title-area h2 {
+    font-size: 3rem; /* Larger and more impactful title */
+    font-weight: 900; /* Extra bold */
+    color: #e63946; /* Vibrant red accent */
+    margin-bottom: 0.8rem;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8); /* Stronger text shadow */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.video-overlay-title-area p {
+    font-size: 1.3rem; /* Clearer descriptive text */
+    color: #ccc;
+    font-weight: 500;
+    line-height: 1.5;
+    max-width: 80%; /* Constrain width for readability */
+    margin: 0 auto;
+}
+
+/* --- End Video Background Section --- */
+
+
+/* General styling for team sections on driver-profile.html */
+.team-section {
+    border-radius: 0.75rem;
+    padding: 2.5rem; /* More generous padding */
+    margin-bottom: 3.5rem; /* Increased space between team sections */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(255, 255, 255, 0.08); /* More prominent shadows */
+    border: 1px solid rgba(255, 255, 255, 0.15); /* Slightly more visible border */
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease-in-out; /* Smooth transition for hover effects */
+}
+
+.team-section:hover {
+    transform: translateY(-8px); /* Lift significantly on hover */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), inset 0 0 20px rgba(255, 255, 255, 0.15);
+}
+
+.team-section h3 {
+    font-size: 2.5rem; /* Larger team name heading */
+    font-weight: 800;
+    color: #fff; /* Default white, overridden by themes below */
+    margin-bottom: 2rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+    position: relative;
+    padding-bottom: 0.8rem; /* Space for the underline */
+}
+
+.team-section h3::after { /* Stylish underline for team names */
+    content: '';
+    display: block;
+    width: 100px; /* Longer underline */
+    height: 5px; /* Thicker underline */
+    background-color: currentColor; /* Matches the text color, which changes with theme */
+    margin: 0.8rem auto 0; /* More space below text */
+    border-radius: 3px;
+    opacity: 0.8;
+    transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out; /* Animation for underline */
+}
+
+.team-section:hover h3::after {
+    width: 150px; /* Expand underline on hover */
+}
+
+.driver-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Slightly wider min for cards */
+    gap: 2.5rem; /* Increased space between driver cards */
+    justify-content: center;
+    align-items: stretch; /* Ensure cards stretch to same height */
+}
+
+.driver-profile-card {
+    background: rgba(40, 40, 40, 0.9); /* Slightly transparent dark background */
+    border-radius: 0.8rem; /* More rounded corners */
+    padding: 2rem; /* Increased padding */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.08); /* Enhanced shadows */
+    text-align: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out;
+    border: 2px solid rgba(255, 255, 255, 0.2); /* More prominent subtle border */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.driver-profile-card:hover {
+    transform: translateY(-8px); /* Lift more on hover */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.1);
+    border-color: currentColor; /* Border glows with team color on hover */
+}
+
+.driver-photo {
+    width: 160px; /* Larger driver photo */
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid currentColor; /* Thicker border matches team color */
+    margin-bottom: 1.5rem; /* More space below photo */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.6); /* Stronger shadow around photo */
+}
+
+.driver-profile-card h4 {
+    font-size: 1.8rem; /* Larger driver name */
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 0.8rem; /* More space below name */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+}
+
+.driver-profile-card .driver-bio {
+    font-size: 1rem; /* Slightly larger base font for bio */
+    color: #ccc;
+    line-height: 1.7; /* Increased line height for readability */
+    text-align: left;
+    margin-top: 1rem;
+    flex-grow: 1; /* Allow bio to grow and push content down */
+}
+
+.driver-profile-card .driver-bio strong {
+    color: #fff; /* Ensure bold stats stand out */
+    font-weight: 700;
+    display: block; /* Make stats appear on new lines */
+    margin-top: 0.5rem; /* Space between stat lines */
+}
+
+
+/* Team Specific Themes */
+
+/* Red Bull Theme */
+.redbull-theme {
+    background: linear-gradient(145deg, #0a0a50 0%, #a00a30 100%); /* Deeper Blue to Richer Red */
+    border-color: #a00a30; /* Red accent border */
+}
+.redbull-theme h3 { color: #fff; }
+.redbull-theme .driver-photo { border-color: #fedf00; } /* Gold accent for RB */
+
+/* McLaren Theme */
+.mclaren-theme {
+    background: linear-gradient(145deg, #f76f02 0%, #e63946 100%); /* Bright Orange to Ferrari Red */
+    border-color: #f76f02;
+}
+.mclaren-theme h3 { color: #fff; }
+.mclaren-theme .driver-photo { border-color: #00bfff; } /* Sky Blue accent for McLaren */
+
+/* Ferrari Theme */
+.ferrari-theme {
+    background: linear-gradient(145deg, #cc0000 0%, #800000 100%); /* Classic Ferrari Red */
+    border-color: #cc0000;
+}
+.ferrari-theme h3 { color: #fff; }
+.ferrari-theme .driver-photo { border-color: #fff; } /* White accent */
+
+/* Mercedes Theme */
+.mercedes-theme {
+    background: linear-gradient(145deg, #00d2be 0%, #00605c 100%); /* Classic Silver/Teal combo */
+    border-color: #00d2be;
+}
+.mercedes-theme h3 { color: #fff; }
+.mercedes-theme .driver-photo { border-color: #c0c0c0; } /* Silver accent */
+
+/* Williams Theme */
+.williams-theme {
+    background: linear-gradient(145deg, #007bff 0%, #004d80 100%); /* Brighter Blue to Darker Blue */
+    border-color: #007bff;
+}
+.williams-theme h3 { color: #fff; }
+.williams-theme .driver-photo { border-color: #e63946; } /* Red accent */
+
+/* Aston Martin Theme */
+.astonmartin-theme {
+    background: linear-gradient(145deg, #006b5d 0%, #00423c 100%); /* Deep British Racing Green */
+    border-color: #006b5d;
+}
+.astonmartin-theme h3 { color: #fff; }
+.astonmartin-theme .driver-photo { border-color: #aacc00; } /* Lime green accent */
+
+/* Racing Bulls (Visa Cash App RB) Theme */
+.visacashapprb-theme {
+    background: linear-gradient(145deg, #0066cc 0%, #003366 100%); /* Blue shades for Racing Bulls */
+    border-color: #0066cc;
+}
+.visacashapprb-theme h3 { color: #fff; }
+.visacashapprb-theme .driver-photo { border-color: #e63946; } /* Red accent */
+
+/* Kick Sauber Theme */
+.kicksauber-theme {
+    background: linear-gradient(145deg, #00e676 0%, #00994d 100%); /* Vibrant Green for Kick Sauber */
+    border-color: #00e676;
+}
+.kicksauber-theme h3 { color: #fff; }
+.kicksauber-theme .driver-photo { border-color: #a020f0; } /* Purple accent for Kick Sauber */
+
+/* Haas Theme */
+.haas-theme {
+    background: linear-gradient(145deg, #8c8c8c 0%, #3d3d3d 100%); /* Silver gradient */
+    border-color: #e63946; /* Red border */
+}
+.haas-theme h3 { color: #e63946; } /* Red title */
+.haas-theme .driver-photo { border-color: #fff; } /* White accent */
+
+/* Alpine Theme */
+.alpine-theme {
+    background: linear-gradient(145deg, #ff69b4 0%, #c23880 100%); /* Hot Pink to deeper pink */
+    border-color: #ff69b4;
+}
+.alpine-theme h3 { color: #fff; }
+.alpine-theme .driver-photo { border-color: #00bfff; } /* Sky Blue accent */
+
+
+/* General Main Content Area (used also on home page) */
+.main-content .content-area {
+    background-color: #333;
+    border: 2px dashed #666;
+    border-radius: 0.6rem;
+    padding: 1.8rem;
+    text-align: center;
+    color: #ddd;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 10rem;
+    box-shadow: inset 0 0 8px rgba(0,0,0,0.4);
+}
+
+.main-page-content {
+    min-height: 18rem;
+}
+
+.main-page-content p {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.main-page-content .highlight {
+    color: #ff8700;
+}
+
+.main-page-content p + p {
+    margin-top: 1rem;
+}
+
+
+/* Media Queries for Responsiveness (copied from home.css, adjusted for driver profile) */
+@media (max-width: 1024px) {
+    .profile-header-visual {
+        height: 200px;
+        margin-bottom: 2.5rem;
+    }
+    .video-overlay-title-area h2 {
+        font-size: 2.5rem;
+    }
+    .video-overlay-title-area p {
+        font-size: 1.1rem;
+    }
+    .team-section {
+        padding: 2rem;
+        margin-bottom: 3rem;
+    }
+    .team-section h3 {
+        font-size: 2.2rem;
+    }
+    .team-section:hover h3::after {
+        width: 120px; /* Adjust expanded underline width */
+    }
+    .driver-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjust grid for driver cards */
+        gap: 2rem;
+    }
+    .driver-photo {
+        width: 140px;
+        height: 140px;
+    }
+    .driver-profile-card h4 {
+        font-size: 1.6rem;
+    }
+    .driver-profile-card .driver-bio {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1.5rem;
+    }
+
+    .f1-logo {
+        max-width: 150px;
+    }
+
+    nav ul {
+        gap: 1.2rem;
+        font-size: 1.1rem;
+        justify-content: flex-start;
+    }
+
+    nav ul::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    .profile-header-visual {
+        height: 150px;
+        margin-bottom: 2rem;
+    }
+    .video-overlay-title-area h2 {
+        font-size: 2rem;
+    }
+    .video-overlay-title-area p {
+        font-size: 0.9rem;
+    }
+    .team-section {
+        padding: 1.5rem;
+        margin-bottom: 2.5rem;
+    }
+    .team-section h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+    .team-section h3::after {
+        width: 80px;
+        height: 3px;
+        margin-top: 0.6rem;
+    }
+    .team-section:hover h3::after {
+        width: 100px;
+    }
+    .driver-grid {
+        grid-template-columns: 1fr; /* Stack driver cards on small screens */
+        gap: 1.5rem;
+    }
+    .driver-photo {
+        width: 120px;
+        height: 120px;
+        border-width: 4px;
+    }
+    .driver-profile-card {
+        padding: 1.5rem;
+    }
+    .driver-profile-card h4 {
+        font-size: 1.4rem;
+    }
+    .driver-profile-card .driver-bio {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .f1-logo {
+        max-width: 120px;
+    }
+
+    nav ul {
+        font-size: 0.85rem;
+        gap: 0.8rem;
+        padding-bottom: 0.4rem;
+    }
+
+    nav ul::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    .profile-header-visual {
+        height: 120px; /* Smaller height for very small screens */
+        margin-bottom: 1.5rem;
+    }
+    .video-overlay-title-area h2 {
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+    }
+    .video-overlay-title-area p {
+        font-size: 0.8rem;
+        max-width: 90%;
+    }
+    .team-section {
+        padding: 1rem;
+        margin-bottom: 2rem;
+    }
+    .team-section h3 {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+        letter-spacing: 0.8px;
+    }
+    .team-section h3::after {
+        width: 60px;
+        height: 2px;
+        margin-top: 0.4rem;
+    }
+    .team-section:hover h3::after {
+        width: 80px;
+    }
+    .driver-profile-card {
+        padding: 1rem;
+    }
+    .driver-photo {
+        width: 90px;
+        height: 90px;
+        border-width: 3px;
+    }
+    .driver-profile-card h4 {
+        font-size: 1.2rem;
+    }
+    .driver-profile-card .driver-bio {
+        font-size: 0.75rem;
+        line-height: 1.5;
+    }
+    .driver-profile-card .driver-bio strong {
+        margin-top: 0.3rem;
+    }
+}

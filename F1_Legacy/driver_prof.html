@@ -3,25 +3,337 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Driver Profiles</title>
+    <title>F1 Hub - Driver Profile</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico"> <!-- Ensure your favicon is in the images folder -->
+    <link rel="stylesheet" href="styles/driver_prof.css"> <!-- Link to your existing CSS file -->
 </head>
 <body>
-    <header>
-        <h4>
-            Driver Profiles(Work in Progress)
-        </h4>
-        <nav>
-            <a href="home.html">Home</a>
-            <a href="timeline.html">F1 Timeline</a>
-            <a href="driver_prof.html">Driver Profiles</a>
-            <a href="team_hist.html">Team History</a>
-            <a href="circ.html">Circuits Archive</a>
-            <a href="cars.html">Technical Evolution</a>
-            <a href="moments.html">Historic Moments</a>
-        </nav>
-    </header>
-    <main>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <!-- Updated F1 logo to SVG for better scalability and quality -->
+                <img src="images/f1_logo.svg" alt="Formula 1 Logo" class="f1-logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="home.html">HOME</a></li>
+                    <li><a href="timeline.html">TIMELINE</a></li>
+                    <li><a href="driver-profile.html">DRIVER PROFILE</a></li>
+                    <li><a href="team-history.html">TEAM HISTORY</a></li>
+                    <li><a href="circuits.html">CIRCUITS</a></li>
+                    <li><a href="car-evolutions.html">CAR EVOLUTIONS</a></li>
+                    <li><a href="moments.html">MOMENTS</a></li>
+                </ul>
+            </nav>
+        </header>
 
-    </main>
+        <!-- Main content for the Driver Profile page -->
+        <main class="main-content">
+            <div class="profile-header-visual">
+                <!-- Video tag for background visual under the main title -->
+                <video autoplay loop playsinline class="driver-profile-video-background" poster="images/driver_profile_poster.jpg">
+                    <!-- Corrected video source to 'videos/drivers.mp4' as per your original request -->
+                    <source src="videos/drivers.mp4" type="video/mp4">
+                    <!-- Add other source types if needed for broader compatibility, e.g., .webm -->
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video-overlay-title-area">
+                    <h2>F1 Driver Profiles</h2>
+                    <p>Meet the stars of the grid, past and present. Explore their careers, stats, and achievements.</p>
+                </div>
+            </div>
+
+            <section class="team-section redbull-theme">
+                <h3>Red Bull Racing</h3>
+                <div class="driver-grid">
+                    <div class="driver-profile-card">
+                        <img src="images/drivers/redbull_driver1.jpg" alt="Max Verstappen" class="driver-photo">
+                        <h4>Max Verstappen</h4>
+                        <p class="driver-bio">
+                            The undisputed dominant force in recent F1 seasons, Verstappen is a fierce competitor known for his aggressive yet precise driving, exceptional race craft, and incredible raw speed. He has consistently extracted maximum performance from his Red Bull machinery.<br>
+                            <strong>World Championships:</strong> 4 (2021, 2022, 2023, 2024)<br>
+                            <strong>Race Wins:</strong> 65<br>
+                            <strong>Podiums:</strong> 116<br>
+                            <strong>Pole Positions:</strong> 43<br>
+                            <strong>Career Points:</strong> 3160.5
+                        </p>
+                    </div>
+                    <div class="driver-profile-card">
+                        <!-- Corrected driver for Red Bull Racing -->
+                        <img src="images/drivers/visacashapprb_driver1.jpg" alt="Yuki Tsunoda" class="driver-photo">
+                        <h4>Yuki Tsunoda</h4>
+                        <p class="driver-bio">
+                            A quick and often hot-headed driver, Tsunoda has shown significant improvement in his F1 career, maturing his race craft and becoming more consistent. He's known for his aggressive overtakes and fighting spirit.<br>
+                            <strong>Race Wins:</strong> 0<br>
+                            <strong>Podiums:</strong> 0<br>
+                            <strong>Career Points:</strong> 42<br>
+                            <strong>Highest Race Finish:</strong> 4th
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="team-section mclaren-theme">
+                <h3>McLaren</h3>
+                <div class="driver-grid">
+                    <div class="driver-profile-card">
+                        <img src="images/drivers/mclaren_driver1.jpg" alt="Lando Norris" class="driver-photo">
+                        <h4>Lando Norris</h4>
+                        <p class="driver-bio">
+                            A hugely popular and highly-rated driver, Norris has consistently impressed with his speed, strong race craft, and mature approach. He's emerged as a genuine front-runner and is a strong contender for future championships.<br>
+                            <strong>Race Wins:</strong> 6<br>
+                            <strong>Podiums:</strong> 34<br>
+                            <strong>Pole Positions:</strong> 11<br>
+                            <strong>Career Points:</strong> 1183<br>
+                            <strong>2024 World Championship Position:</strong> 2nd (374 pts)
+                        </p>
+                    </div>
+                    <div class="driver-profile-card">
+                        <img src="images/drivers/mclaren_driver2.jpg" alt="Oscar Piastri" class="driver-photo">
+                        <h4>Oscar Piastri</h4>
+                        <p class="driver-bio">
+                            A remarkably talented young driver who quickly adapted to F1, Piastri showcased immense potential in his rookie season, securing a maiden F1 win. He's considered one of the sport's brightest future stars.<br>
+                            <strong>Race Wins:</strong> 7<br>
+                            <strong>Podiums:</strong> 292 (4th in 2024 standings)<br>
+                            <strong>Highest Race Finish:</strong> 1st
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="team-section ferrari-theme">
+                <h3>Ferrari</h3>
+                <div class="driver-grid">
+                    <div class="driver-profile-card">
+                        <img src="images/drivers/ferrari_driver1.jpg" alt="Lewis Hamilton" class="driver-photo">
+                        <h4>Lewis Hamilton</h4>
+                        <p class="driver-bio">
+                            A legend of the sport, Hamilton is a seven-time World Champion and statistically one of the most successful drivers in F1 history. His move to Ferrari for 2025 is a monumental event, bringing his vast experience, tactical brilliance, and winning mentality to the Scuderia.<br>
+                            <strong>World Championships:</strong> 7 (2008, 2014, 2015, 2017, 2018, 2019, 2020)<br>
+                            <strong>Race Wins:</strong> 105 (F1 Record)<br>
+                            <strong>Podiums:</strong> 202 (F1 Record)<br>
+                            <strong>Pole Positions:</strong> 104 (F1 Record)<br>
+                            <strong>Career Points:</strong> 4933.5
+                        </p>
+                    </div>
+                    <div class="driver-profile-card">
+                        <img src="images/drivers/ferrari_driver2.jpg" alt="Charles Leclerc" class="driver-photo">
+                        <h4>Charles Leclerc</h4>
+                        <p class="driver-bio">
+                            A highly talented and blindingly fast driver, Leclerc is a fan favorite known for his exceptional qualifying pace and strong race performances. He's a key part of Ferrari's long-term plans and consistently challenges for poles and wins.<br>
+                            <strong>Race Wins:</strong> 8<br>
+                            <strong>Podiums:</strong> 46<br>
+                            <strong>Pole Positions:</strong> 26<br>
+                            <strong>Career Points:</strong> 1524<br>
+                            <strong>2024 World Championship Position:</strong> 3rd (356 pts)
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="team-section mercedes-theme">
+                <h3>Mercedes</h3>
+                <div class="driver-grid">
+                    <div class="driver-profile-card">
+                        <img src="images/drivers/mercedes_driver1.jpg" alt="George Russell" class="driver-photo">
+                        <h4>George Russell</h4>
+                        <p class="driver-bio">
+                            A consistent and technically astute driver, Russell has established himself as a top talent with strong qualifying and race pace. He's known for his analytical approach and ability to extract performance from the car.<br>
+                            <strong>Race Wins:</strong> 3<br>
+                            <strong>Podiums:</strong> 19<br>
+                            <strong>Pole Positions:</strong> 5<br>
+                            <strong>Career Points:</strong> 825<br>
+                            <strong>Best Championship Position:</strong> 4th (2022, 2025)
+                        </p>
+                    </div>
+                    <div class="driver-profile-card">
+                        <img src="images/drivers/mercedes_driver2.jpg" alt="Kimi Antonelli" class="driver-photo">
+                        <h4>Kimi Antonelli</h4>
+                        <p class="driver-bio">
+                            A highly anticipated Mercedes junior driver making his F1 debut in 2025. Antonelli boasts an impressive junior formula record and is widely tipped as a future champion.<br>
+                            <strong>Race Wins:</strong> 0<br>
+                            <strong>Podiums:</strong> 0<br>
+                            <strong>Fastest Laps:</strong> 1<br>
+                            <strong>Points Scored:</strong> 48 (7th in 2025 standings)<br>
+                            <strong>Best Race Finish:</strong> 4th
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="team-section williams-theme">
+                <h3>Williams</h3>
+                <div class="driver-grid">
+                    <div class="driver-profile-card">
+                        <img src="images/drivers/williams_driver1.jpg" alt="Alex Albon" class="driver-photo">
+                        <h4>Alex Albon</h4>
+                        <p class="driver-bio">
+                            A resilient and highly-rated driver, Albon has consistently performed well for Williams, often exceeding the car's expected performance. He's a strong team leader and a crucial asset for the team's development.<br>
+                            <strong>Race Wins:</strong> 0<br>
+                            <strong>Podiums:</strong> 2<br>
+                            <strong>Career Points:</strong> 282<br>
+                            <strong>Highest Race Finish:</strong> 3rd
+                        </p>
+                    </div>
+                    <div class="driver-profile-card">
+                        <img src="images/drivers/williams_driver2.jpg" alt="Carlos Sainz" class="driver-photo">
+                        <h4>Carlos Sainz</h4>
+                        <p class="driver-bio">
+                            A consistent points scorer and Grand Prix winner, Sainz is known for his intelligence, adaptability, and strong race pace. His move to Williams for 2025 is a significant boost for the team.<br>
+                            <strong>Race Wins:</strong> 4<br>
+                            <strong>Podiums:</strong> 27<br>
+                            <strong>Pole Positions:</strong> 6<br>
+                            <strong>Career Points:</strong> 1284.5<br>
+                            <strong>Best Championship Position:</strong> 5th (2021, 2022, 2024)
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="team-section astonmartin-theme">
+                <h3>Aston Martin</h3>
+                <div class="driver-grid">
+                    <div class="driver-profile-card">
+                        <img src="images/drivers/astonmartin_driver1.jpg" alt="Fernando Alonso" class="driver-photo">
+                        <h4>Fernando Alonso</h4>
+                        <p class="driver-bio">
+                            A double World Champion and one of the most experienced and respected drivers on the grid. Alonso is renowned for his exceptional race craft, strategic thinking, and unwavering determination. He continues to perform at an incredibly high level.<br>
+                            <strong>World Championships:</strong> 2 (2005, 2006)<br>
+                            <strong>Race Wins:</strong> 32<br>
+                            <strong>Podiums:</strong> 106<br>
+                            <strong>Pole Positions:</strong> 22<br>
+                            <strong>Career Points:</strong> 2329
+                        </p>
+                    </div>
+                    <div class="driver-profile-card">
+                        <img src="images/drivers/astonmartin_driver2.jpg" alt="Lance Stroll" class="driver-photo">
+                        <h4>Lance Stroll</h4>
+                        <p class="driver-bio">
+                            The son of Aston Martin's owner, Stroll has shown flashes of strong pace and has achieved podium finishes in challenging conditions. He continues to work on his consistency and race performance.<br>
+                            <strong>Race Wins:</strong> 0<br>
+                            <strong>Podiums:</strong> 3<br>
+                            <strong>Pole Positions:</strong> 1<br>
+                            <strong>Career Points:</strong> 38
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="team-section visacashapprb-theme">
+                <h3>Racing Bulls</h3>
+                <div class="driver-grid">
+                    <div class="driver-profile-card">
+                        <!-- Corrected driver for Racing Bulls -->
+                        <img src="images/drivers/visacashapprb_driver2.jpg" alt="Liam Lawson" class="driver-photo">
+                        <h4>Liam Lawson</h4>
+                        <p class="driver-bio">
+                            After impressive stand-in performances in 2024, Lawson has secured a full-time seat for 2025. He's known for his calm demeanor, quick adaptation, and ability to score points.<br>
+                            <strong>Race Wins (F1):</strong> 0<br>
+                            <strong>Podiums (F1):</strong> 0<br>
+                            <strong>Career Points:</strong> 9<br>
+                            <strong>Highest Race Finish:</strong> 8th
+                        </p>
+                    </div>
+                    <div class="driver-profile-card">
+                        <!-- Corrected driver for Racing Bulls -->
+                        <img src="images/drivers/visacashapprb_driver1.jpg" alt="Isack Hadjar" class="driver-photo">
+                        <h4>Isack Hadjar</h4>
+                        <p class="driver-bio">
+                            Another promising talent from the Red Bull junior academy, Hadjar steps up to F1 for 2025. He has shown strong results in the junior categories, including wins and podiums.<br>
+                            <strong>Race Wins (F1):</strong> 0<br>
+                            <strong>Podiums (F1):</strong> 0<br>
+                            <strong>Points Scored:</strong> 21<br>
+                            <strong>Junior Career:</strong> Multiple wins and podiums in F3 and Formula Regional.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="team-section kicksauber-theme">
+                <h3>Kick Sauber</h3>
+                <div class="driver-grid">
+                    <div class="driver-profile-card">
+                        <img src="images/drivers/kicksauber_driver1.jpg" alt="Nico Hülkenberg" class="driver-photo">
+                        <h4>Nico Hülkenberg</h4>
+                        <p class="driver-bio">
+                            An experienced and highly regarded driver, Hulkenberg returned to F1 after a hiatus and has consistently demonstrated his speed and reliability. He's a valuable asset for any team, known for his strong qualifying performances.<br>
+                            <strong>Race Wins:</strong> 0<br>
+                            <strong>Podiums:</strong> 0<br>
+                            <strong>Pole Positions:</strong> 1<br>
+                            <strong>Career Points:</strong> 41<br>
+                            <strong>Note:</strong> Most F1 starts without a podium finish.
+                        </p>
+                    </div>
+                    <div class="driver-profile-card">
+                        <img src="images/drivers/kicksauber_driver2.jpg" alt="Gabriel Bortoletto" class="driver-photo">
+                        <h4>Gabriel Bortoletto</h4>
+                        <p class="driver-bio">
+                            The reigning Formula 2 champion, Bortoleto is making his F1 debut in 2025. He's a highly promising young driver with a strong winning pedigree in the junior categories.<br>
+                            <strong>Key Stats (F1):</strong> Making his F1 debut in 2025.<br>
+                            <strong>Junior Career:</strong> FIA Formula 2 Champion (2024).
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="team-section haas-theme">
+                <h3>Haas</h3>
+                <div class="driver-grid">
+                    <div class="driver-profile-card">
+                        <img src="images/drivers/haas_driver1.jpg" alt="Esteban Ocon" class="driver-photo">
+                        <h4>Esteban Ocon</h4>
+                        <p class="driver-bio">
+                            A robust and competitive driver, Ocon is known for his strong defensive driving and ability to maximize opportunities to score points. He's a consistent presence in the midfield battles.<br>
+                            <strong>Race Wins:</strong> 1<br>
+                            <strong>Podiums:</strong> 4<br>
+                            <strong>Career Points:</strong> 465
+                        </p>
+                    </div>
+                    <div class="driver-profile-card">
+                        <img src="images/drivers/haas_driver2.jpg" alt="Oliver Bearman" class="driver-photo">
+                        <h4>Oliver Bearman</h4>
+                        <p class="driver-bio">
+                            After a memorable stand-in debut in 2024 where he scored points, Bearman earns a full-time seat for 2025. He's a highly-rated young driver with a lot of potential, known for his impressive pace in junior categories.<br>
+                            <strong>Race Wins (F1):</strong> 0<br>
+                            <strong>Podiums (F1):</strong> 0<br>
+                            <strong>Career Points:</strong> 7<br>
+                            <strong>Highest Race Finish:</strong> 7th
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="team-section alpine-theme">
+                <h3>Alpine</h3>
+                <div class="driver-grid">
+                    <div class="driver-profile-card">
+                        <img src="images/drivers/alpine_driver1.jpg" alt="Pierre Gasly" class="driver-photo">
+                        <h4>Pierre Gasly</h4>
+                        <p class="driver-bio">
+                            A Grand Prix winner, Gasly is a fast and aggressive driver who has proven his ability to lead a team and deliver strong performances. He's known for his impressive qualifying speed and determination.<br>
+                            <strong>Race Wins:</strong> 1<br>
+                            <strong>Podiums:</strong> 4<br>
+                            <strong>Career Points:</strong> 42
+                        </p>
+                    </div>
+                    <div class="driver-profile-card">
+                        <img src="images/drivers/alpine_driver2.jpg" alt="Franco Colapinto" class="driver-photo">
+                        <h4>Franco Colapinto</h4>
+                        <p class="driver-bio">
+                            A new face for 2025, Colapinto has impressed in the junior categories, including a strong showing in his F1 debut as a stand-in. He brings a strong junior formula record and is looking to make his mark in F1.<br>
+                            <strong>Key Stats (as of 2024 season - F1 debut):</strong><br>
+                            <strong>Race Wins (F1):</strong> 0<br>
+                            <strong>Podiums (F1):</strong> 0<br>
+                            <strong>Career Points (F1 2024):</strong> 5 (19th in standings - from limited races)<br>
+                            <strong>Junior Career:</strong> Spanish F4 Champion (2019), multiple wins and podiums in F3 and F2.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+    </div>
+
 </body>
 </html>
